@@ -45,32 +45,32 @@ class DirectoryListDetailed extends DirectoryList
 	 * @var string The HTML text that makes up the path navigation links
 	 */
 	protected $path_nav;
-	
+
 	/**
 	 * @var int Total number of files in this directory
 	 */
 	protected $total_files;
-	
+
 	/**
 	 * @var int Total number of folders in this directory
 	 */
 	protected $total_folders;
-	
+
 	/**
 	 * @var int Total number of folders in this directory (including parent)
 	 */
 	protected $raw_total_folders;
-	
+
 	/**
 	 * @var int Total number of downloads of files in this directory
 	 */
 	protected $total_downloads;
-	
+
 	/**
 	 * @var Size Total size of this directory (recursive)
 	 */
 	protected $total_size;
-	
+
 	/**
 	 * @return string The HTML text that makes up the path navigation
 	 */
@@ -79,11 +79,11 @@ class DirectoryListDetailed extends DirectoryList
 		global $config, $subdir;
 		$exploded = explode('/', $subdir);
 		$c = count($exploded) - 1;
-		$temp = '<a class="autoindex_a" href="' . Url::html_output($_SERVER['PHP_SELF']) . '?dir=">'
+		$temp = '<a class="autoindex_a2" href="' . Url::html_output($_SERVER['PHP_SELF']) . '?dir=">'
 		. Url::html_output(substr(str_replace('/', ' / ', $config -> __get('base_dir')), 0, -2)) . '</a>/ ';
 		for ($i = 0; $i < $c; $i++)
 		{
-			$temp .= '<a class="autoindex_a" href="' . Url::html_output($_SERVER['PHP_SELF'])
+			$temp .= '<a class="autoindex_a2" href="' . Url::html_output($_SERVER['PHP_SELF'])
 			. '?dir=';
 			for ($j = 0; $j <= $i; $j++)
 			{
@@ -93,7 +93,7 @@ class DirectoryListDetailed extends DirectoryList
 		}
 		return $temp;
 	}
-	
+
 	/**
 	 * Returns -1 if $a < $b or 1 if $a > $b
 	 *
@@ -135,7 +135,7 @@ class DirectoryListDetailed extends DirectoryList
 		}
 		return ((strtolower($_SESSION['sort_mode']) === 'd') ? -$val : $val);
 	}
-	
+
 	/**
 	 * @param array $list The array to be sorted with the callback_sort function
 	 */
@@ -143,7 +143,7 @@ class DirectoryListDetailed extends DirectoryList
 	{
 		usort($list, array('self', 'callback_sort'));
 	}
-	
+
 	/**
 	 * @return int The total number of files and folders (including the parent folder)
 	 */
@@ -151,7 +151,7 @@ class DirectoryListDetailed extends DirectoryList
 	{
 		return $this -> raw_total_folders + $this -> total_files;
 	}
-	
+
 	/**
 	 * @param string $path The directory to read the files from
 	 * @param int $page The number of files to skip (used for pagination)
@@ -204,7 +204,7 @@ class DirectoryListDetailed extends DirectoryList
 			$this -> total_folders--;
 		}
 		$this -> path_nav = $this -> set_path_nav();
-		
+
 		//Paginate the files
 		if (ENTRIES_PER_PAGE)
 		{
@@ -221,7 +221,7 @@ class DirectoryListDetailed extends DirectoryList
 			$this -> contents = array_slice($this -> contents, ($page - 1) * $num_per_page, $num_per_page);
 		}
 	}
-	
+
 	/**
 	 * @return string The HTML text of the directory list, using the template system
 	 */

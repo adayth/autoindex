@@ -6,6 +6,7 @@
     {file:filename} {file:thumbnail}
    </a>{file:new_icon}{file:md5_link}{file:delete_link}{file:rename_link}{file:edit_description_link}{file:ftp_upload_link}
   </td>
+<!--
   {if:download_count}
   <td class="autoindex_td_right">
   {file:downloads}
@@ -22,4 +23,5 @@
   {file:description}
   </td>
   {end if:description_file}
+-->
  </tr>

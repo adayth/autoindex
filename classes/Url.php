@@ -64,7 +64,7 @@ class Url
 	 */
 	public static function html_output($str)
 	{
-		return htmlentities($str, ENT_QUOTES, 'UTF-8');
+		return htmlentities($str);
 	}
 	
 	/**

@@ -3,8 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{config:language}">
 <head>
 	<title>{words:index of} {info:dir}</title>
+
+    <link href="{config:template}bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--
 	<link href="{config:template}default.css" rel="stylesheet" title="AutoIndex Default" type="text/css" />
 	<link href="{config:template}alternate.css" rel="alternate stylesheet" title="AutoIndex Alternate" type="text/css" />
+    -->
 </head>
 
-<body class="autoindex_body">
+<body class="autoindex_body container">

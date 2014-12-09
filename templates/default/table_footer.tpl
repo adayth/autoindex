@@ -3,6 +3,7 @@
   <th class="autoindex_th">
    <span class="autoindex_small">{info:total_files} {words:files} - {info:total_folders} {words:folders}</span>
   </th>
+<!--
   {if:download_count}
   <th class="autoindex_th">
     <span class="autoindex_small">{words:total downloads}: {info:total_downloads}</span>
@@ -14,6 +15,7 @@
   <th class="autoindex_th">
    &nbsp;
   </th>
+-->
   {if:description_file}
   <th class="autoindex_th">
    &nbsp;
@@ -25,6 +27,8 @@
 		/* We request that you do not remove the link to the AutoIndex website.
 		   This not only gives respect to the large amount of time given freely by the
 		   developer, but also helps build interest, traffic, and use of AutoIndex. */
+    </div>
+ </div>
 
 
 {if:entries_per_page}
@@ -37,7 +41,7 @@
 </p>
 {end if:entries_per_page}
 
-
+<!--
 {if:archive}
 <div class="autoindex_small" style="text-align: left;">
 	<a class="autoindex_a" href="{info:archive_link}">{words:download directory as tar.gz archive}</a>
@@ -46,12 +50,12 @@
 
 
 <p />
-<table class="autoindex_table">
+<table class="autoindex_table table table-condensed table-bordered form-table">
  <tr style="vertical-align: top;">
   {if:search_enabled}
   <td>
    <table><tr class="paragraph"><td class="autoindex_td" style="padding: 8px;">
-    {if:icon_path}<img src="{config:icon_path}search.png" width="16" height="16" alt="{words:search}" /> {end if:icon_path}{words:search}:
+     <label>{if:icon_path}<img src="{config:icon_path}search.png" width="16" height="16" alt="{words:search}" /> {end if:icon_path}{words:search}:</label>
      {info:search_box}
    </td></tr></table>
   </td>
@@ -66,3 +70,4 @@
   {end if:use_login_system}
  </tr>
 </table>
+-->

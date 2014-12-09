@@ -44,7 +44,7 @@ class Search extends DirectoryListDetailed
 	 * @var array List of matched filenames
 	 */
 	private $matches;
-	
+
 	/**
 	 * @return string The HTML text that makes up the search box
 	 */
@@ -53,22 +53,23 @@ class Search extends DirectoryListDetailed
 		global $words, $subdir;
 		$search = (isset($_GET['search']) ? Url::html_output($_GET['search']) : '');
 		$mode = (isset($_GET['search_mode']) ? self::clean_mode($_GET['search_mode']) : 'f');
-		$modes = array('files' => 'f', 'folders' => 'd', 'both' => 'fd');
+		//$modes = array('files' => 'f', 'folders' => 'd', 'both' => 'fd');
+        $modes = array('both' => 'fd');
 		$out = '<form action="' . Url::html_output($_SERVER['PHP_SELF']) . '" method="get">'
 		. '<p><input type="hidden" name="dir" value="' . $subdir . '" />'
-		. '<input type="text" name="search" value="' . $search
-		. '" /><br /><select name="search_mode">';
+		. '<input class="form-control" type="text" name="search" value="' . $search
+		. '" /><br /><select class="form-control hidden" name="search_mode">';
 		foreach ($modes as $word => $m)
 		{
 			$sel = (($m == $mode) ? ' selected="selected"' : '');
 			$out .= '<option value="' . $m . '"' . $sel . '>'
 			. $words -> __get($word) . '</option>';
 		}
-		$out .= '</select><input type="submit" class="button" value="'
-		. $words -> __get('search') . '" /></p></form>';
+		$out .= '</select><input type="submit" class="button btn btn-primary" value="'
+		. $words -> __get('search') . '" /> <a class="btn btn-default" href="' . Url::html_output($_SERVER['PHP_SELF']) . '"> Reiniciar</a></p></form>';
 		return $out;
 	}
-	
+
 	/**
 	 * @param string $filename
 	 * @param string $string
@@ -88,7 +89,7 @@ class Search extends DirectoryListDetailed
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Merges $obj into $this.
 	 *
@@ -102,7 +103,7 @@ class Search extends DirectoryListDetailed
 		$this -> total_size -> add_size($obj -> __get('total_size'));
 		$this -> matches = array_merge($this -> matches, $obj -> __get('contents'));
 	}
-	
+
 	/**
 	 * Returns a string with all characters except 'd' and 'f' stripped.
 	 * Either 'd' 'f' 'df' will be returned, defaults to 'f'
@@ -127,7 +128,7 @@ class Search extends DirectoryListDetailed
 		}
 		return $str;
 	}
-	
+
 	/**
 	 * @param string $query String to search for
 	 * @param string $dir The folder to search (recursive)
@@ -176,7 +177,7 @@ class Search extends DirectoryListDetailed
 			}
 		}
 		global $words, $config, $subdir;
-		$link = ' <a class="autoindex_a" href="' . Url::html_output($_SERVER['PHP_SELF'])
+		$link = ' <a class="autoindex_a2" href="' . Url::html_output($_SERVER['PHP_SELF'])
 		. '?dir=' . Url::translate_uri($subdir) . '">'
 		. Url::html_output($dir) . '</a> ';
 		$this -> path_nav = $words -> __get('search results for')
